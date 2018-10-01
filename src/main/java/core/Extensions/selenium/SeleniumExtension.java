@@ -20,7 +20,7 @@ public class SeleniumExtension implements AfterEachCallback, BeforeEachCallback,
         return driver;
     }
 
-    private static final Logger logger = Logger.getLogger("SeleniumLog");
+    private static final Logger logger = Logger.getLogger("SeleniumLogger");
 
     @Override
     public void beforeAll(ExtensionContext extensionContext) throws Exception {
