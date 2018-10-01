@@ -25,7 +25,7 @@ public class TemplatePage extends Page {
     }
 
     public void waitToBeLoaded() {
-        PageUtils.waitUntilVisible(By.className("#"));
+        PageUtils.waitUntilVisible(By.xpath("//div/img[@alt='Google']"));
     }
 
 }

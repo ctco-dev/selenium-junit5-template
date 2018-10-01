@@ -1,1 +1,0 @@
-java -jar selenium-server-standalone-2.53.1.jar -Dwebdriver.ie.driver=IEDriverServer_x64_2.53.1.exe
