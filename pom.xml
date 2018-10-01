@@ -115,10 +115,10 @@
             <properties>
                 <selenium.grid>false</selenium.grid>
                 <webdriver.url>http://localhost:4444</webdriver.url>
-                <qa.user>user</qa.user>
-                <qa.password>password</qa.password>
+                <qa.user>usar</qa.user>
+                <qa.password>parole</qa.password>
                 <qa.homepage>https://google.com</qa.homepage>
-                <tests>LOCALHOST</tests>
+                <tests>LOCAL</tests>
             </properties>
         </profile>
     </profiles>

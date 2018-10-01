@@ -1,7 +1,7 @@
 package core;
 
 
-import core.common.BrowserUtils;
+import core.remote.BrowserUtils;
 import core.config.Config;
 
 import org.junit.jupiter.api.AfterEach;

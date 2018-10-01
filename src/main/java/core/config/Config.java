@@ -1,6 +1,6 @@
 package core.config;
 
-import core.common.SeleniumException;
+import core.remote.SeleniumException;
 
 import java.net.URL;
 import java.util.HashMap;
