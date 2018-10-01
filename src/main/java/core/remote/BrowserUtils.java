@@ -24,7 +24,6 @@ public class BrowserUtils {
         FirefoxOptions browser = new FirefoxOptions();
 
         setDefaultCapabilities(browser);
-
         try {
             String serverUrl = getValue(ConfigProperty.WEBDRIVER_URL);
             RemoteWebDriver driver = null;

@@ -10,7 +10,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.concurrent.TimeUnit;
 
-import static core.GlobalWorld.getDriver;
+import static core.Extensions.selenium.SeleniumExtension.getDriver;
 import static core.config.Config.getValue;
 
 
