@@ -3,6 +3,11 @@ package core.remote;
 import core.config.ConfigProperty;
 import org.openqa.selenium.SessionNotCreatedException;
 import org.openqa.selenium.firefox.FirefoxOptions;
+import org.openqa.selenium.ie.InternetExplorerDriver;
+import org.openqa.selenium.logging.LogType;
+import org.openqa.selenium.logging.LoggingPreferences;
+import org.openqa.selenium.remote.CapabilityType;
+import org.openqa.selenium.remote.DesiredCapabilities;
 import org.openqa.selenium.remote.RemoteWebDriver;
 import org.openqa.selenium.remote.UnreachableBrowserException;
 
@@ -21,7 +26,7 @@ public class BrowserUtils {
     public static String videoURL = "None";
 
     public static RemoteWebDriver configureBrowser() {
-        FirefoxOptions browser = new FirefoxOptions();
+        DesiredCapabilities browser = configureIE();
 
         setDefaultCapabilities(browser);
         try {
@@ -54,7 +59,7 @@ public class BrowserUtils {
         }
     }
 
-    private static void setDefaultCapabilities(FirefoxOptions browser) {
+    private static void setDefaultCapabilities(DesiredCapabilities browser) {
         if (Boolean.valueOf(getValue(ConfigProperty.SELENIUM_GRID))) {
             browser.setCapability("project", getValue(ConfigProperty.SELENIUM_GRID_PROJECT));
 
@@ -68,6 +73,17 @@ public class BrowserUtils {
             browser.setCapability("screen-resolution", getValue(ConfigProperty.BROWSER_RESOLUTION));
             browser.setCapability("takesScreenshot", false);
         }
+    }
+
+    private static DesiredCapabilities configureIE() {
+        DesiredCapabilities browser = DesiredCapabilities.internetExplorer();
+        LoggingPreferences logPrefs = new LoggingPreferences();
+        logPrefs.enable(LogType.BROWSER, Level.ALL);
+        browser.setCapability("ie.enableFullPageScreenshot", false);
+        browser.setCapability("ie.ensureCleanSession", true);
+        browser.setCapability(InternetExplorerDriver.INTRODUCE_FLAKINESS_BY_IGNORING_SECURITY_DOMAINS, true);
+        browser.setCapability(CapabilityType.LOGGING_PREFS, logPrefs);
+        return browser;
     }
 
     private static void sleep(int sleepTimeout) {

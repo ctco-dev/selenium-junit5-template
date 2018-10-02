@@ -3,7 +3,7 @@ package qa.pages;
 public enum Pages {
 
     //common pages
-    TEMPLATE_PAGE("#");
+    LOGIN_PAGE("index.php?route=account/login");
 
     private final String postfix;
 

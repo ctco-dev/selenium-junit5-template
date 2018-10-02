@@ -136,10 +136,10 @@
             <properties>
                 <selenium.grid>false</selenium.grid>
                 <webdriver.url>http://localhost:4444</webdriver.url>
-                <qa.user>usar</qa.user>
-                <qa.password>parole</qa.password>
-                <qa.homepage>https://google.com</qa.homepage>
-                <tests>LOCAL</tests>
+                <qa.user>user</qa.user>
+                <qa.password>pass</qa.password>
+                <qa.homepage>http://demoshop24.com/</qa.homepage>
+                <tests>LOCALHOST</tests>
             </properties>
         </profile>
     </profiles>
