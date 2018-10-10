@@ -8,7 +8,7 @@ import org.junit.jupiter.api.Test;
 
 import static core.config.Config.getValue;
 
-public class MongoConnectionTest {
+public class MongoConnectionExampleTest {
 
     private MongoUtils mongoUtil = new MongoUtils(
                     getValue(ConfigProperty.MONGO_HOST), 9081,

@@ -9,12 +9,12 @@ import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 
 @Getter
-public class TemplatePage extends Page {
+public class SeleniumTemplatePage extends Page {
 
     @FindBy(xpath = "#")
     private WebElement sampleElement;
 
-    public TemplatePage(RemoteWebDriver driver) {
+    public SeleniumTemplatePage(RemoteWebDriver driver) {
         super(driver);
         PageFactory.initElements(driver, this);
     }
@@ -25,7 +25,7 @@ public class TemplatePage extends Page {
     }
 
     public void waitToBeLoaded() {
-        PageUtils.waitUntilVisible(By.xpath("//div/img[@alt='Google']"));
+        PageUtils.waitUntilVisible(By.xpath("//h2[text()='Returning Customer']"));
     }
 
 }

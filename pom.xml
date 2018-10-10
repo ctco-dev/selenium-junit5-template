@@ -16,6 +16,9 @@
         <junit-version>5.2.0</junit-version>
         <junit.platform.version>1.2.0</junit.platform.version>
         <slf4j.version>1.7.5</slf4j.version>
+        <allure.version>2.7.0</allure.version>
+        <allure.maven.version>2.9</allure.maven.version>
+        <aspectj.version>1.8.10</aspectj.version>
     </properties>
 
     <dependencies>
@@ -81,6 +84,24 @@
             <scope>test</scope>
         </dependency>
 
+        <!-- Reporting -->
+        <dependency>
+            <groupId>io.qameta.allure</groupId>
+            <artifactId>allure-junit5</artifactId>
+            <version>${allure.version}</version>
+            <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>io.qameta.allure</groupId>
+            <artifactId>allure-maven</artifactId>
+            <version>${allure.maven.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.aspectj</groupId>
+            <artifactId>aspectjweaver</artifactId>
+            <version>${aspectj.version}</version>
+        </dependency>
+
     </dependencies>
 
     <build>
@@ -103,6 +124,16 @@
                         <includeTags>${tests}</includeTags>
                     </properties>
                     <argLine>-Xms512m -Xmx512m</argLine>
+                    <testFailureIgnore>false</testFailureIgnore>
+                    <argLine>
+                        -javaagent:"${settings.localRepository}/org/aspectj/aspectjweaver/${aspectj.version}/aspectjweaver-${aspectj.version}.jar"
+                    </argLine>
+                    <systemProperties>
+                        <property>
+                            <name>junit.jupiter.extensions.autodetection.enabled</name>
+                            <value>true</value>
+                        </property>
+                    </systemProperties>
                 </configuration>
                 <dependencies>
                     <dependency>
@@ -115,7 +146,21 @@
                         <artifactId>junit-jupiter-engine</artifactId>
                         <version>${junit-version}</version>
                     </dependency>
+                    <dependency>
+                        <groupId>org.aspectj</groupId>
+                        <artifactId>aspectjweaver</artifactId>
+                        <version>${aspectj.version}</version>
+                    </dependency>
                 </dependencies>
+            </plugin>
+            <plugin>
+                <groupId>io.qameta.allure</groupId>
+                <artifactId>allure-maven</artifactId>
+                <version>${allure.maven.version}</version>
+                <configuration>
+                    <reportVersion>2.4.1</reportVersion>
+                    <resultsDirectory>allure-results</resultsDirectory>
+                </configuration>
             </plugin>
         </plugins>
 
@@ -136,10 +181,21 @@
             <properties>
                 <selenium.grid>false</selenium.grid>
                 <webdriver.url>http://localhost:4444</webdriver.url>
-                <qa.user>usar</qa.user>
-                <qa.password>parole</qa.password>
-                <qa.homepage>https://google.com</qa.homepage>
-                <tests>LOCAL</tests>
+                <qa.user>user</qa.user>
+                <qa.password>pass</qa.password>
+                <qa.homepage>http://site.com</qa.homepage>
+                <tests>LOCALHOST</tests>
+            </properties>
+        </profile>
+        <profile>
+            <id>mobile</id>
+            <properties>
+                <selenium.grid>false</selenium.grid>
+                <webdriver.url>http://localhost:4723</webdriver.url>
+                <qa.user>user</qa.user>
+                <qa.password>pass</qa.password>
+                <qa.homepage>http://site.com</qa.homepage>
+                <tests>MOBILE</tests>
             </properties>
         </profile>
     </profiles>

@@ -7,19 +7,19 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Tag;
 import org.junit.jupiter.api.extension.ExtendWith;
-import qa.pages.TemplatePage;
+import qa.pages.SeleniumTemplatePage;
 
 import static core.Extensions.selenium.SeleniumExtension.getDriver;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 @ExtendWith(SeleniumExtension.class)
-public class ExtensionTest {
+public class SeleniumExampleTest {
 
-    TemplatePage page;
+    SeleniumTemplatePage page;
 
     @BeforeEach
     public void initPage() {
-        page = new TemplatePage(getDriver());
+        page = new SeleniumTemplatePage(getDriver());
         page.open();
     }
 
